@@ -15,7 +15,8 @@ const axiosConfig = (status, lon, lat, direction) => ({
 async function connection(sql, ...params) {
   const con = await mysql.createConnection({
     host: "localhost",
-    user: "root",
+    user: "user",
+    password: "Password123",
     database: "test",
   });
   const [rows, fields] = await con.execute(sql, params);
