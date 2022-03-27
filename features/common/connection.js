@@ -14,11 +14,12 @@ async function connection(sql, ...params) {
 async function getURL() {
 	const [rows, fields] = await connection("SELECT * FROM `server`");
 	const respObj = rows[0];
-	return respObj;
+	console.log(respObj.url);
+	return respObj.url;
 }
 const axiosConfig = async (status, lon, lat, direction) => ({
 	method: "post",
-	url: await getURL().url,
+	url: await getURL(),
 	data: {
 		status: status,
 
