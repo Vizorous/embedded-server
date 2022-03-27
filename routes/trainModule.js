@@ -21,7 +21,7 @@ router.post("/", async function (req, res, next) {
 		const setStatusThingy = await connection(sql, status, route_id, stop_id);
 		if (status !== 1) {
 			const response = await axios(axiosConfig(0));
-			console.log(response);
+			console.log(response.data);
 			return res.sendStatus(200);
 		}
 		const [rows, fields] = await connection(
@@ -44,7 +44,7 @@ router.post("/", async function (req, res, next) {
 			stop_id
 		);
 		const response = await axios(axiosConfig(1, secondRow[0].lon, secondRow[0].lat, secondRow[0].direction));
-		console.log(response);
+		console.log(response.data);
 		const respObj = rows[0];
 		return res.json(respObj);
 	} catch (e) {
