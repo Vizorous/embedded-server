@@ -20,7 +20,7 @@ router.post("/", async function (req, res, next) {
 	try {
 		const setStatusThingy = await connection(sql, status, route_id, stop_id);
 		if (status !== 1) {
-			const response = await axios(axiosConfig(0));
+			const response = await axios(await axiosConfig(0));
 			console.log(response.data);
 			return res.sendStatus(200);
 		}
@@ -43,7 +43,7 @@ router.post("/", async function (req, res, next) {
 			route_id,
 			stop_id
 		);
-		const response = await axios(axiosConfig(1, secondRow[0].lon, secondRow[0].lat, secondRow[0].direction));
+		const response = await axios(await axiosConfig(1, secondRow[0].lon, secondRow[0].lat, secondRow[0].direction));
 		console.log(response.data);
 		const respObj = rows[0];
 		return res.json(respObj);

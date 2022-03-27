@@ -14,12 +14,11 @@ async function connection(sql, ...params) {
 async function getURL() {
 	const [rows, fields] = await connection("SELECT * FROM `server`");
 	const respObj = rows[0];
-	console.log(respObj.url);
 	return respObj;
 }
-const axiosConfig = (status, lon, lat, direction) => ({
+const axiosConfig = async (status, lon, lat, direction) => ({
 	method: "post",
-	url: "http://ff2a-2402-4000-b197-3e73-bdcd-68c-5cc2-5526.ngrok.io",
+	url: await getURL().url,
 	data: {
 		status: status,
 
