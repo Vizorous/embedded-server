@@ -14,13 +14,12 @@ async function connection(sql, ...params) {
 async function getURL() {
 	const [rows, fields] = await connection("SELECT * FROM `server`");
 	const respObj = rows[0];
-	console.log(respObj);
+	console.log(respObj.url);
 	return respObj;
 }
-getURL();
 const axiosConfig = (status, lon, lat, direction) => ({
 	method: "post",
-	url: "http://192.168.1.2",
+	url: getURL(),
 	data: {
 		status: status,
 
