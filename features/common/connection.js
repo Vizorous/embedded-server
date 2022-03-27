@@ -19,7 +19,7 @@ async function getURL() {
 }
 const axiosConfig = (status, lon, lat, direction) => ({
 	method: "post",
-	url: getURL().then((respObj) => respObj.url),
+	url: "http://ff2a-2402-4000-b197-3e73-bdcd-68c-5cc2-5526.ngrok.io",
 	data: {
 		status: status,
 
