@@ -19,7 +19,7 @@ async function getURL() {
 }
 const axiosConfig = (status, lon, lat, direction) => ({
 	method: "post",
-	url: getURL(),
+	url: getURL().then((respObj) => respObj.url),
 	data: {
 		status: status,
 
